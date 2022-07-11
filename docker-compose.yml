@@ -1,0 +1,22 @@
+version: '3'
+services:
+  hello-world-app:
+    build: .
+    container_name: hello-world-app
+
+    #volumes:
+      #- "${LOCAL_WAR_DIR_PATH}:${TARGET_DOCKER_TOMCAT_WAR_PATH}"       
+    networks:
+      ob_local_network:
+    ports:
+      - 8080:8080
+      - 8787:8787
+      - 22:22
+  
+  
+networks:
+  ob_local_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/16  
